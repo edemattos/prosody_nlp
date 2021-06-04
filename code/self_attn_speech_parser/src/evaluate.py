@@ -122,7 +122,6 @@ def evalb(evalb_dir, gold_trees, predicted_trees, ref_gold_path=None, is_train=T
     with open(perm_predicted_path, "w") as outfile:
         for tree in predicted_trees:
             outfile.write("{}\n".format(tree.linearize()))
-    """
             
     command = "{} -p {} {} {} > {}".format(
         evalb_program_path,
@@ -133,7 +132,7 @@ def evalb(evalb_dir, gold_trees, predicted_trees, ref_gold_path=None, is_train=T
     )
     print(f'evalb shell command: {command}')
     #subprocess.run(command, shell=True)
-
+    """
 
     scr = scorer.Scorer()
     scr.evalb(gold_path,predicted_path,output_path)
