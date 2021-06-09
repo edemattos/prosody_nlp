@@ -9,8 +9,8 @@ swdir=${KALDI_ROOT}/src/featbin
 utils=${KALDI_ROOT}/egs/swbd/s5c/utils
 
 # make list of files to process
-#find $sdir -iname '*.sph' | sort > sph.flist
-find $sdir -iname 'sw0410*.sph' | sort > sph.flist
+find $sdir -iname '*.sph' | sort > sph.flist
+#find $sdir -iname 'sw0410*.sph' | sort > sph.flist
 sed -e 's?.*/??' -e 's?.sph??' sph.flist | paste - sph.flist > sph.scp
 
 sph2pipe=$KALDI_ROOT/tools/sph2pipe_v2.5/sph2pipe
