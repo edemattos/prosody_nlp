@@ -1,0 +1,1 @@
+python src/main_sparser.py test --test-path ${TREE_PATH} --test-sent-id-path ${SENT_ID_PATH} --output-path /disk/scratch/s2057915/prosody_nlp/code/self_attn_speech_parser/predictions.txt --feature-path sample_data --test-prefix sample_dev --model-path-base models/sample_model_gpu_new_dev=27.34.pt
