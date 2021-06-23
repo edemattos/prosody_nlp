@@ -17,11 +17,14 @@ echo "Setting up bash enviroment"
 source ~/.bashrc
 
 # Set paths
-DATA_DIR=/disk/scratch/s2057915/prosody_nlp/code/self_attn_speech_parser/sample_data/rewrite
-MODEL_DIR=/disk/scratch/s2057915/prosody_nlp/code/self_attn_speech_parser/models
+PREFIX=turn_dev
+DATA_DIR=/home/s2057915/prosody_nlp/data/input_features/turn_pause_dur_fixed
+MODEL_DIR=/home/s2057915/prosody_nlp/code/self_attn_speech_parser/models
 SEED=1234
-SENT_ID_PATH=${DATA_DIR}/sample_dev_sent_ids.txt
-TREE_PATH=${DATA_DIR}/sample_dev.txt
+SENT_ID_PATH=${DATA_DIR}/${PREFIX}_sent_ids.txt
+TREE_PATH=${DATA_DIR}/${PREFIX}.trees
+FEAT_DIR=${DATA_DIR}
+MODEL_PATH=${MODEL_DIR}/turn_sp_correct_eval_72240_dev=90.90.pt
 
 conda activate prosody
 echo "Activated conda env: ${CONDA_DEFAULT_ENV}"
@@ -34,14 +37,14 @@ set -e
 SCRATCH_DISK=/disk/scratch
 SCRATCH_HOME=${SCRATCH_DISK}/${USER}
 mkdir -p ${SCRATCH_HOME}
-echo "Moving input data to the compute node's scratch space: $SCRATCH_DISK"
+#echo "Moving input data to the compute node's scratch space: $SCRATCH_DISK"
 # input data directory path on the DFS
 proj_home=/home/${USER}/prosody_nlp/code/self_attn_speech_parser
-src_path=${proj_home}/models
+#src_path=${proj_home}/models
 # input data directory path on the scratch disk of the node
-dest_path=${SCRATCH_HOME}/prosody_nlp/code/self_attn_speech_parser/models
-mkdir -p ${dest_path}
-rsync --archive --update --compress --progress ${src_path}/ ${dest_path}
+#dest_path=${SCRATCH_HOME}/prosody_nlp/code/self_attn_speech_parser/models
+#mkdir -p ${dest_path}
+#rsync --archive --update --compress --progress ${src_path}/ ${dest_path}
 
 
 # Run experiment
@@ -57,12 +60,15 @@ echo "Command ran successfully!"
 
 
 # Move from scratch to DFS
-echo "Moving output data back to DFS"
+#echo "Moving output data back to DFS"
 # predictions
-src_path=${SCRATCH_HOME}/prosody_nlp/code/self_attn_speech_parser/predictions.txt
-dest_path=${proj_home}/predictions.txt
-rsync --archive --update --compress --progress ${src_path} ${dest_path}
-
+#src_path=${SCRATCH_HOME}/prosody_nlp/code/self_attn_speech_parser/predictions.txt
+#dest_path=${proj_home}
+#rsync --archive --update --compress --progress ${src_path} ${dest_path}
+# results
+#src_path=${SCRATCH_HOME}/prosody_nlp/code/self_attn_speech_parser/results
+#dest_path=${proj_home}
+#rsync --archive --update --compress --progress ${src_path}/ ${dest_path}
 
 echo ""
 echo "============"

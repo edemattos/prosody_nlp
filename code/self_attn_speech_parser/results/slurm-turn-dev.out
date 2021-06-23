@@ -1,0 +1,43 @@
+Job running on landonia20
+Job started: 23/06/2021 10:42:48
+Setting up bash enviroment
+Activated conda env: prosody
+Running provided command: python src/main_sparser.py test --test-path ${TREE_PATH} --test-sent-id-path ${SENT_ID_PATH} --output-path ${proj_home}/predictions.txt --feature-path ${FEAT_DIR} --test-prefix ${PREFIX} --model-path-base ${MODEL_PATH}
+  2965 152850 801399 /tmp/evalb-o3s5q98_/predicted.txt
+  2980  36650 430669 /tmp/evalb-o3s5q98_/output.txt
+EUD: run_test
+Loading test trees from /home/s2057915/prosody_nlp/data/input_features/turn_pause_dur_fixed/turn_dev.trees...
+2965 2965
+Loaded 2,965 test examples.
+Loading model from /home/s2057915/prosody_nlp/code/self_attn_speech_parser/models/turn_sp_correct_eval_72240_dev=90.90.pt...
+dict_keys(['spec', 'state_dict', 'trainer'])
+
+d_positional: 512
+d_content: 512
+
+residual dropout
+relu+residual dropout in partitioned FFN
+residual dropout
+relu+residual dropout in partitioned FFN
+residual dropout
+relu+residual dropout in partitioned FFN
+residual dropout
+relu+residual dropout in partitioned FFN
+Loading speech features for test set...
+	 duration
+	 pause
+	 partition
+	 pitch
+	 fbank
+Parsing test sentences...
+Output written to: /home/s2057915/prosody_nlp/code/self_attn_speech_parser/predictions.txt
+Temporary dir <TemporaryDirectory '/tmp/evalb-o3s5q98_'>
+Number of sentences evaled: 2965.00
+MATCH
+Successfully parsed in: /tmp/evalb-o3s5q98_/predicted.txt
+test-fscore (Recall=91.00, Precision=91.75, FScore=91.38, CompleteMatch=59.43) test-elapsed 0h00m53s
+Command ran successfully!
+
+============
+job finished successfully
+Job finished: 23/06/2021 10:46:28

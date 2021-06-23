@@ -1,0 +1,49 @@
+Job running on landonia20
+Job started: 22/06/2021 23:42:52
+Setting up bash enviroment
+Activated conda env: prosody
+Moving input data to the compute node's scratch space: /disk/scratch
+Running provided command: python src/main_sparser.py test --test-path ${TREE_PATH} --test-sent-id-path ${SENT_ID_PATH} --output-path ${proj_home}/predictions.txt --feature-path ${FEAT_DIR} --test-prefix ${PREFIX} --model-path-base ${MODEL_PATH}
+EUD: run_test
+Loading test trees from /home/s2057915/prosody_nlp/data/input_features/turn_pause_dur_fixed/turn_train.trees...
+49294 49294
+Loaded 49,294 test examples.
+Loading model from /home/s2057915/prosody_nlp/code/self_attn_speech_parser/models/turn_sp_correct_eval_72240_dev=90.90.pt...
+dict_keys(['spec', 'state_dict', 'trainer'])
+
+d_positional: 512
+d_content: 512
+
+residual dropout
+relu+residual dropout in partitioned FFN
+residual dropout
+relu+residual dropout in partitioned FFN
+residual dropout
+relu+residual dropout in partitioned FFN
+residual dropout
+relu+residual dropout in partitioned FFN
+Loading speech features for test set...
+	 duration
+	 pause
+	 partition
+	 pitch
+	 fbank
+Parsing test sentences...
+Traceback (most recent call last):
+  File "src/main_sparser.py", line 1012, in <module>
+    main()
+  File "src/main_sparser.py", line 1008, in main
+    args.callback(args)
+  File "src/main_sparser.py", line 699, in run_test
+    subbatch_sent_ids, subbatch_features)
+  File "/home/s2057915/prosody_nlp/code/self_attn_speech_parser/src/parse_model.py", line 1762, in parse_batch
+    speech_content_annotations=speech_content_annotations)
+  File "/home/s2057915/miniconda3/envs/prosody/lib/python3.6/site-packages/torch/nn/modules/module.py", line 477, in __call__
+    result = self.forward(*input, **kwargs)
+  File "/home/s2057915/prosody_nlp/code/self_attn_speech_parser/src/parse_model.py", line 940, in forward
+    speech_content_annotations=speech_content_annotations)
+  File "/home/s2057915/miniconda3/envs/prosody/lib/python3.6/site-packages/torch/nn/modules/module.py", line 477, in __call__
+    result = self.forward(*input, **kwargs)
+  File "/home/s2057915/prosody_nlp/code/self_attn_speech_parser/src/parse_model.py", line 703, in forward
+    speech_content_annotations], 1)
+RuntimeError: invalid argument 0: Sizes of tensors must match except in dimension 1. Got 3236 and 3210 in dimension 0 at /opt/conda/conda-bld/pytorch_1535491974311/work/aten/src/THC/generic/THCTensorMath.cu:87
