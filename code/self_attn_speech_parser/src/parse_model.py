@@ -25,6 +25,7 @@ import chart_helper
 import nkutil
 
 import trees
+import embed  #EUD
 
 START = "<START>"
 STOP = "<STOP>"
@@ -67,6 +68,7 @@ bert_path = "/afs/inf.ed.ac.uk/group/project/prosody/prosody_nlp/data"
 fisher_path = "/g/ssli/projects/disfluencies/ttmt001/fisher_disf"
 #glove_pretrained_path = "/homes/ttmt001/transitory/GloVe-1.2"
 glove_pretrained_path =  "/afs/inf.ed.ac.uk/group/project/prosody/prosody_nlp/data"
+glove_pretrained_path =  "/home/s2057915/prosody_nlp/data"  # EUD: bypass permission error
 
 class BatchIndices:
     """
@@ -1751,6 +1753,15 @@ class SpeechParser(nn.Module):
         ########################################
         # End of extra_content_annotation cases
         ########################################
+        
+        # EUD create indexing scheme and write embeddings to file
+        embed.save(
+            extra_content_annotations,
+            speech_content_annotations,
+            emb_idxs,
+            self.glove_vocab
+        )
+
         if self.encoder is not None:
             annotations, _ = self.encoder(emb_idxs, batch_idxs, # EKN annotations is what comes out of the encoder
                 extra_content_annotations=extra_content_annotations, 

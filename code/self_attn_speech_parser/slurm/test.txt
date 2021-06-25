@@ -1,1 +1,1 @@
-python src/main_sparser.py test --test-path ${TREE_PATH} --test-sent-id-path ${SENT_ID_PATH} --output-path ${proj_home}/predictions.txt --feature-path ${FEAT_DIR} --test-prefix ${PREFIX} --model-path-base ${MODEL_PATH}
+python src/main_sparser.py test --test-path ${TREE_PATH} --test-sent-id-path ${SENT_ID_PATH} --output-path ${proj_home}/predictions-${PREFIX}.txt --feature-path ${FEAT_DIR} --test-prefix ${PREFIX} --model-path-base ${MODEL_PATH}
