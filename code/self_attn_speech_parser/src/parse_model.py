@@ -1759,7 +1759,9 @@ class SpeechParser(nn.Module):
             extra_content_annotations,
             speech_content_annotations,
             emb_idxs,
-            self.glove_vocab
+            self.glove_vocab,
+            sentences,
+            sent_ids
         )
 
         if self.encoder is not None:
