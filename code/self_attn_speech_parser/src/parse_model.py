@@ -1761,6 +1761,8 @@ class SpeechParser(nn.Module):
             sentences,
             sent_ids
         )
+        print(f"Custom embeddings saved. Terminating. (EUD)")
+        exit(0)
 
         if self.encoder is not None:
             annotations, _ = self.encoder(emb_idxs, batch_idxs, # EKN annotations is what comes out of the encoder
