@@ -1758,8 +1758,6 @@ class SpeechParser(nn.Module):
         embed.save(
             extra_content_annotations,
             speech_content_annotations,
-            emb_idxs,
-            self.glove_vocab,
             sentences,
             sent_ids
         )
